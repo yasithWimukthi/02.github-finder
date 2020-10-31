@@ -15,9 +15,11 @@ export class Navbar extends Component {
 
     render() {
         return (
-            <div>
-                <i className={this.props.icon}></i> {this.props.title}
-            </div>
+            <nav className="navbar bg-primary">
+                <h1>
+                    <i className={this.props.icon}></i> {this.props.title}
+                </h1>
+            </nav >
         )
     }
 }
