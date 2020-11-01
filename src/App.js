@@ -23,11 +23,19 @@ class App extends React.Component {
       users : res.data,
       loading : false
     });
-  }
+  } 
 
   //SEARCH GIHUB USERS
-  searchUsers = (text)=>{
-    console.log(text);
+  searchUsers = async (text)=>{
+    //console.log(text);
+    this.setState({loading : true});
+    const res = await axios.get(`https://api.github.com/users?q=${text}`); 
+    //console.log(res.data);
+
+    this.setState({
+      users : res.data,
+      loading : false
+    });
   };
 
   render(){
@@ -37,7 +45,7 @@ class App extends React.Component {
 
           <div className="container">
               <Search searchUsers={this.searchUsers}></Search>
-              <Users loading={this.state.loading} users={this.state.users} />
+              <Users  users={this.state.users} loading={this.state.loading} />
           </div>
           
       </div>
