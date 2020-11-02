@@ -9,7 +9,8 @@ class App extends React.Component {
 
   state = {
     users : [],
-    loading : false
+    loading : false,
+    alert : null
   }
 
   async componentDidMount(){
@@ -46,6 +47,17 @@ class App extends React.Component {
     })
   };
 
+  // SET ALERT
+  setAlert = (message,type)=>{
+    this.setState({
+      alert : {
+        message : message,
+        type : type
+      }
+    })
+    //console.log(message)
+  };
+
   render(){
     return (
       <div className="App">
@@ -55,7 +67,8 @@ class App extends React.Component {
               <Search 
                 searchUsers={this.searchUsers} 
                 clearUsers={this.clearUsers}
-                showClear={this.state.users.length>0 ? true : false }>              
+                showClear={this.state.users.length>0 ? true : false }
+                setAlert={this.setAlert}>              
               </Search>
               <Users  users={this.state.users} loading={this.state.loading} />
           </div>
