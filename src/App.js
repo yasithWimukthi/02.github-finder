@@ -56,6 +56,12 @@ class App extends React.Component {
         type : type
       }
     })
+
+    setTimeout(()=>{
+      this.setState({
+        alert : null
+      })
+    },5000)
     //console.log(message)
   };
 
