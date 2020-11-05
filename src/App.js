@@ -12,6 +12,7 @@ class App extends React.Component {
 
   state = {
     users : [],
+    user : {},
     loading : false,
     alert : null
   }
@@ -57,7 +58,7 @@ class App extends React.Component {
     //console.log(res.data);
 
     this.setState({
-      users : res.data,
+      user: res.data,
       loading : false
     });
   }
