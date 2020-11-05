@@ -31,16 +31,36 @@ class App extends React.Component {
 
   //SEARCH GIHUB USERS
   searchUsers = async (text)=>{
-    //console.log(text);
-    this.setState({loading : true});
-    const res = await axios.get(`https://api.github.com/users?q=${text}`); 
+
+    this.setState(
+      {
+        loading : true
+      }
+      );
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}`); 
+    console.log(res.data);
+
+    this.setState({
+      users : res.data.items,
+      loading : false
+    });
+  };
+
+  // GET SINGLE GIHUB USER
+  getUser = async (username)=>{
+
+    this.setState(
+      {
+        loading : true
+      });
+    const res = await axios.get(`https://api.github.com/users/${username}`); 
     //console.log(res.data);
 
     this.setState({
       users : res.data,
       loading : false
     });
-  };
+  }
 
   // CLEAR USERS FROM STATE
   clearUsers = ()=>{
