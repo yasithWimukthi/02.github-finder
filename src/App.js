@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {BrowserRouter as Router , Switch, Route} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
+import User from './components/users/User';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
@@ -110,6 +111,14 @@ class App extends React.Component {
                   )} />
 
                   <Route exact path='/about' component={About}/>
+
+                  <Route exact path='user/:login' render={props=>(
+                    <User 
+                      {...props} 
+                      getUser={this.getUser} 
+                      user={this.state.user} 
+                      loading={this.state.loading}/>
+                  )}/>
                 </Switch>
 
             </div>
