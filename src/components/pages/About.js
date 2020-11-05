@@ -9,3 +9,5 @@ export const About = () => {
         </Fragment>
     );
 }
+
+export default About;

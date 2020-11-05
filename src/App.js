@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import About from './components/pages/About';
 import axios from 'axios';
 import './App.css';
 
@@ -75,7 +76,7 @@ class App extends React.Component {
             <div className="container">
                 <Alert alert={this.state.alert} />
                 <Switch>
-                  <Route exact path="/" render={props=>{
+                  <Route exact path="/" render={props=>(
                     <Fragment>
                       <Search 
                         searchUsers={this.searchUsers} 
@@ -85,7 +86,9 @@ class App extends React.Component {
                       </Search>
                       <Users  users={this.state.users} loading={this.state.loading} />
                     </Fragment>
-                  }} />
+                  )} />
+
+                  <Route exact path='/about' component={About}/>
                 </Switch>
 
             </div>
