@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {BrowserRouter as Router , Switch, Route} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
@@ -68,21 +68,30 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
-          <Navbar />
+      <Router>
+        <div className="App">
+            <Navbar />
 
-          <div className="container">
-              <Alert alert={this.state.alert} />
-              <Search 
-                searchUsers={this.searchUsers} 
-                clearUsers={this.clearUsers}
-                showClear={this.state.users.length>0 ? true : false }
-                setAlert={this.setAlert}>              
-              </Search>
-              <Users  users={this.state.users} loading={this.state.loading} />
-          </div>
-          
-      </div>
+            <div className="container">
+                <Alert alert={this.state.alert} />
+                <Switch>
+                  <Route exact path="/" render={props=>{
+                    <Fragment>
+                      <Search 
+                        searchUsers={this.searchUsers} 
+                        clearUsers={this.clearUsers}
+                        showClear={this.state.users.length>0 ? true : false }
+                        setAlert={this.setAlert}>              
+                      </Search>
+                      <Users  users={this.state.users} loading={this.state.loading} />
+                    </Fragment>
+                  }} />
+                </Switch>
+
+            </div>
+            
+        </div>
+      </Router>
     );
   }
 

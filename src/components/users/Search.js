@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * RENDER SERACH BAR
+ * 
  */
 
 export class Search extends Component {
