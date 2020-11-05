@@ -56,7 +56,7 @@ class App extends React.Component {
         loading : true
       });
     const res = await axios.get(`https://api.github.com/users/${username}`); 
-    //console.log(res.data);
+    console.log("test");
 
     this.setState({
       user: res.data,
